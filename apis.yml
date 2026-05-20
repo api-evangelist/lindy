@@ -24,6 +24,10 @@ apis:
       - type: Documentation
         url: https://docs.lindy.ai
 common:
+  - type: GitHubOrganization
+    url: https://github.com/lindy-ai
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/lindyai
   - type: Website
     url: https://www.lindy.ai
   - type: Documentation
