@@ -32,6 +32,8 @@ common:
     url: https://www.lindy.ai
   - type: Documentation
     url: https://docs.lindy.ai
+  - type: LLMsTxt
+    url: https://docs.lindy.ai/llms.txt
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
