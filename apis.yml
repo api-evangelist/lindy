@@ -3,7 +3,7 @@ name: Lindy
 description: >-
   Lindy is an AI automation platform for building customizable AI agents across CRM, inbox, and internal tools.
 type: Index
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
   - AI Agents
   - AI Automation
