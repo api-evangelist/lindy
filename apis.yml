@@ -32,7 +32,7 @@ common:
     url: https://www.lindy.ai
   - type: Documentation
     url: https://docs.lindy.ai
-  - type: LLMsTxt
+  - type: LlmsText
     url: https://docs.lindy.ai/llms.txt
 maintainers:
   - FN: Kin Lane
