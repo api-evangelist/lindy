@@ -24,6 +24,10 @@ apis:
       - type: Documentation
         url: https://docs.lindy.ai
 common:
+  - type: TrustCenter
+    url: security/lindy-trust-center.yml
+  - type: DomainSecurity
+    url: security/lindy-domain-security.yml
   - type: GitHubOrganization
     url: https://github.com/lindy-ai
   - type: LinkedIn
@@ -34,6 +38,8 @@ common:
     url: https://docs.lindy.ai
   - type: LlmsText
     url: https://docs.lindy.ai/llms.txt
+  - url: https://www.lindy.ai/blog
+    type: Blog
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
