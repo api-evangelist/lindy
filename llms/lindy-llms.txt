@@ -1,0 +1,37 @@
+# Lindy Documentation
+
+## Docs
+
+- [What is Lindy?](https://docs.lindy.ai/index.md): The AI teammate that knows your whole company. It lives in Slack, knows everything your company knows, and does the actual work.
+- [Quickstart](https://docs.lindy.ai/start-here/quickstart.md): Get Lindy into your team's Slack, then connect your own email, calendar, and phone. Two minutes.
+- [Team Setup](https://docs.lindy.ai/start-here/team-setup.md): The two ways people join your workspace, plus admin controls, credits, and ownership
+- [Set up Lindy](https://docs.lindy.ai/coming-soon/setup.md): Get Lindy into your team's Slack, link everyone, and connect your email, calendar, and phone.
+- [Home](https://docs.lindy.ai/coming-soon/home.md): Where you talk to Lindy and see what it's been doing for you. Ask anything, finish your setup, and watch the page fill in as Lindy works.
+- [Meetings](https://docs.lindy.ai/coming-soon/meeting-library.md): Lindy records, transcribes, and summarizes your calls, files them into shared folders, and lets you ask questions across every meeting.
+- [Files](https://docs.lindy.ai/coming-soon/files.md): Browse and manage the files Lindy uses: a versioned file system you can see into, edit, and share with your team.
+- [Routines](https://docs.lindy.ai/coming-soon/routines.md): Saved instructions that tell Lindy to do recurring work on its own: daily briefs, meeting follow-ups, weekly digests, and anything you set up.
+- [Skills](https://docs.lindy.ai/coming-soon/skills.md): Teach Lindy how you work: reusable playbooks it picks up on its own when a request calls for them.
+- [Slack Commands](https://docs.lindy.ai/coming-soon/slack-commands.md): Slash commands for managing your Lindy connection, context, and usage right inside Slack.
+- [Daily Brief](https://docs.lindy.ai/features/meeting-assistant/daily-brief.md): A personalized daily briefing on your day, meetings, and anything else you care about
+- [Email Drafting](https://docs.lindy.ai/features/inbox-management/email-drafting.md): AI-drafted replies that land in your drafts folder, ready to review and send
+- [Email Labeling](https://docs.lindy.ai/features/inbox-management/email-triage.md): Lindy automatically labels and sorts your inbox so you start every day in control
+- [Meeting Notes](https://docs.lindy.ai/features/meeting-assistant/meeting-notes.md): Lindy joins, records, and transcribes your meetings on Google Meet, Zoom, and Microsoft Teams, delivers structured summaries, and saves everything to a searchable library you can query in plain language
+- [Meeting Prep](https://docs.lindy.ai/features/meeting-assistant/meeting-prep.md): Automatic pre-meeting briefings with attendee research, past context, and agenda
+- [Smart Scheduling](https://docs.lindy.ai/features/meeting-assistant/scheduling.md): Find times, send invites, and lock in meetings. No more back-and-forth.
+- [Email Alerting](https://docs.lindy.ai/features/inbox-management/email-alerting.md): Lindy texts you when something time-sensitive hits your inbox, so you never miss what matters
+- [Follow-up Bumps](https://docs.lindy.ai/features/inbox-management/follow-up-bumps.md): Lindy drafts a follow-up when a sent email gets no reply, so nothing slips through the cracks
+- [iMessage & SMS](https://docs.lindy.ai/features/imessage-sms.md): Text Lindy like a friend. Delegate work from your phone.
+- [Ad Hoc Tasks](https://docs.lindy.ai/features/ad-hoc-tasks.md): Delegate research, knowledge lookups, and on-demand tasks to Lindy
+- [Best Practices](https://docs.lindy.ai/start-here/best-practices.md)
+- [Chrome Extension](https://docs.lindy.ai/features/chrome-extension.md): Lindy runs inside Gmail. Triaged inbox, a morning brief, drafted replies, and a sidebar chat, all without leaving your tab.
+- [Integrations](https://docs.lindy.ai/integrations/overview.md): Connect Lindy to the tools your team already uses, and control what it can do with guardrails.
+- [Pricing](https://docs.lindy.ai/pricing.md): Simple per-user plans for the AI teammate that runs your work life. Plus, Pro, Max, and Enterprise.
+- [Understanding Your Usage](https://docs.lindy.ai/account-billing/usage.md): Why you saw a usage warning, how your plan works, and what to do if you need more
+- [Billing](https://docs.lindy.ai/coming-soon/lindy-teammate-billing.md): How Lindy Teammate is priced: a seat for each person, a free week for new teammates, and one pool of credits your whole team shares.
+- [Security](https://docs.lindy.ai/resources/security.md)
+- [Changelog](https://docs.lindy.ai/resources/changelog.md)
+- [Export Docs for LLM](https://docs.lindy.ai/export-full-docs.md)
+
+## OpenAPI Specs
+
+- [openapi](https://docs.lindy.ai/api-reference/openapi.json)
