@@ -4,86 +4,97 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Lindy
 providerId: lindy
 created: '2026-05-04'
-# Provenance stamped 2026-08-11: this artifact was written by the API Evangelist
-# bulk sweep dated 2026-05-04, not harvested from the provider. See roadmap#35.
-method: generated
-modified: '2026-05-04'
+modified: '2026-08-29'
+generated: '2026-08-29'
+method: searched
+source: >-
+  https://docs.lindy.ai/pricing , https://docs.lindy.ai/account-billing/usage ,
+  https://docs.lindy.ai/skills/by-lindy/webhooks , https://www.lindy.ai/llms.txt
 tags:
   - AI Agents
   - AI Automation
   - Rate Limiting
   - Quotas
-  - Throttling
-description: Machine-readable rate limit definitions for the Lindy API surface. Captures per-tier quotas,
-  burst behavior, response signaling, and recovery semantics. Defaults are scaffold values to be replaced
-  with published provider limits.
-headers:
-  limit: X-RateLimit-Limit
-  remaining: X-RateLimit-Remaining
-  reset: X-RateLimit-Reset
-  retryAfter: Retry-After
-  policy: RateLimit-Policy
-responseCodes:
-  throttled: 429
-  quotaExceeded: 429
-  serviceUnavailable: 503
-limits:
-  - tier: free
-    name: Free Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 10
-    burst: 20
-    timeFrame: minute
-    applies:
-      - Lindy
-  - tier: free
-    name: Free Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 1000
+description: >-
+  Rate-limit posture for Lindy, re-read from the provider's own documentation on
+  2026-08-29. THIS FILE PREVIOUSLY CONTAINED INVENTED LIMITS. The 2026-05-04
+  bulk sweep wrote free/professional/enterprise tiers at 10/100/1000 requests
+  per minute with X-RateLimit-* response headers; none of that is published by
+  Lindy and none of it was ever observed. It has been removed. Lindy documents
+  NO API rate limits at all. What it does meter is credits — a per-user monthly
+  allowance pooled across the workspace — which is a consumption quota on agent
+  work, not a request-rate limit on an API.
+limit_count: 0
+headers: {}
+headers_note: >-
+  No rate-limit response headers are documented. No X-RateLimit-*, RateLimit-*
+  or Retry-After convention appears anywhere in the docs, and no unauthenticated
+  Lindy API response is available to observe them on — the one documented API
+  path (https://public.lindy.ai/api/v1/webhooks/[unique-id]) requires a
+  per-webhook bearer secret and every unauthenticated probe returns a bare
+  Express 404 with no rate-limit headers.
+responseCodes: {}
+limits: []
+quotas:
+  - name: Plus monthly credits
+    scope: per user, pooled across the workspace
+    metric: credits
+    limit: 3000
     timeFrame: month
-    applies:
-      - Lindy
-  - tier: professional
-    name: Professional Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 100
-    burst: 200
-    timeFrame: minute
-    applies:
-      - Lindy
-  - tier: professional
-    name: Professional Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 100000
+    source: https://docs.lindy.ai/pricing
+  - name: Pro monthly credits
+    scope: per user, pooled across the workspace
+    metric: credits
+    limit: 15000
     timeFrame: month
-    applies:
-      - Lindy
-  - tier: enterprise
-    name: Enterprise Negotiated Limit
+    source: https://docs.lindy.ai/pricing
+  - name: Max monthly credits
+    scope: per user, pooled across the workspace
+    metric: credits
+    limit: 35000
+    timeFrame: month
+    source: https://docs.lindy.ai/pricing
+  - name: Enterprise credits
     scope: contract
-    metric: requests_per_minute
-    limit: 1000
-    burst: 5000
-    timeFrame: minute
-    applies:
-      - Lindy
-policies:
-  - name: Backoff Strategy
-    description: Clients should implement exponential backoff with jitter, honoring the Retry-After header
-      when present.
-  - name: Burst Handling
-    description: Short bursts above the steady-state limit are tolerated up to the documented burst ceiling
-      before throttling engages.
-  - name: Quota Reset
-    description: Monthly quotas reset at the start of each calendar month in UTC. Per-minute and per-second
-      windows reset on a sliding-window basis.
-  - name: Fair Use
-    description: Even on uncapped enterprise tiers, sustained usage that materially impacts shared infrastructure
-      may be subject to fair-use throttling.
+    metric: credits
+    limit: -1
+    timeFrame: month
+    source: https://docs.lindy.ai/pricing
+  - name: Connected inboxes
+    scope: per user
+    metric: inboxes
+    limit: 2
+    tier: Plus
+    source: https://docs.lindy.ai/pricing
+  - name: Connected inboxes
+    scope: per user
+    metric: inboxes
+    limit: 3
+    tier: Pro
+    source: https://docs.lindy.ai/pricing
+  - name: Connected inboxes
+    scope: per user
+    metric: inboxes
+    limit: 5
+    tier: Max and Enterprise
+    source: https://docs.lindy.ai/pricing
+exhaustion_behavior:
+  documented: true
+  source: https://docs.lindy.ai/account-billing/usage
+  detail: >-
+    Lindy warns on usage rather than returning a throttle status. The published
+    page is "Understanding Your Usage — why you saw a usage warning, how your
+    plan works, and what to do if you need more". No HTTP status code, retry
+    window or backoff guidance is published.
+probes:
+  - url: https://public.lindy.ai/api/v1/webhooks/test
+    status: 404
+    note: No rate-limit headers on the response.
+  - url: https://docs.lindy.ai/mcp
+    status: 200
+    note: >-
+      The one live callable Lindy endpoint. tools/list returned 200 with no
+      RateLimit-* or Retry-After headers.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

@@ -2,13 +2,6 @@
   "repo": "lindy",
   "feeds": [
     {
-      "source": "https://lindy.com/en/feed/",
-      "feed_url": "https://lindy.com/en/feed/",
-      "title": "",
-      "saved": 0,
-      "method": "feed"
-    },
-    {
       "source": "https://www.lindy.ai/blog",
       "feed_url": "https://www.lindy.ai/blog",
       "title": "",
@@ -17,5 +10,6 @@
     }
   ],
   "fetched": "2026-08-22T20:20:02Z",
-  "post_count": 36
+  "post_count": 25,
+  "notes": "Removed the https://lindy.com/en/feed/ source on 2026-08-29. lindy.com is LINDY Electronik GmbH, a German cable/KVM/AV connectivity manufacturer and an entirely different company from Lindy (lindy.ai), the AI agent platform this repo profiles. Lindy's own site footer states 'Lindy is not associated with Lindy Electronik Gmbh' (https://www.lindy.ai/security). Eleven misattributed posts harvested from that feed were deleted. Do not re-add this feed."
 }

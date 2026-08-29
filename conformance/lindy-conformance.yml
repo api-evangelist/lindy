@@ -1,0 +1,225 @@
+generated: '2026-08-29'
+method: searched
+source: >-
+  https://www.lindy.ai/security , https://app.drata.com/trust/9cb791f0-0c38-11ee-865f-029d78a187d9 ,
+  https://docs.lindy.ai/ , live contract-discovery probes
+provider: Lindy
+providerId: lindy
+description: >-
+  Standards and compliance posture for Lindy. Compliance is well published and
+  independently audited. Cross-cutting API standards are almost entirely absent
+  because Lindy publishes no OpenAPI, no GraphQL schema and no REST reference —
+  the machine-readable surface it does publish is agent-native (MCP, A2A,
+  llms.txt, Agent Skill), not contract-native.
+contract_discovery:
+  performed: '2026-08-29'
+  result: no-published-contract
+  detail: >-
+    Every STEP 0b probe missed on every host. The one file that looks like a
+    contract is a leftover platform scaffold and was deliberately NOT saved.
+  scaffold_rejected:
+    path: /openapi/api-reference/openapi.json
+    reachable_via: >-
+      the docs MCP server's read-only filesystem tool
+      (query_docs_filesystem_lindy_documentation) at https://docs.lindy.ai/mcp
+    advertised_at: 'https://docs.lindy.ai/llms.txt — "## OpenAPI Specs — [openapi](https://docs.lindy.ai/api-reference/openapi.json)"
+      (that URL itself returns 404 "Asset not found")'
+    info_title: OpenAPI Plant Store
+    servers:
+      - http://sandbox.mintlify.com
+    size_bytes: 2709
+    operations: 3
+    verdict: >-
+      STEP 0c ownership check FAILED. This is Mintlify's stock starter template
+      — a plant-store sample API on sandbox.mintlify.com. It says nothing about
+      Lindy in info.title, servers[], contact or terms. It was not saved to
+      openapi/ and nothing was derived from it. Lindy's own llms.txt advertises
+      it as "OpenAPI Specs", which is how a template becomes a false contract
+      claim; the link it advertises is itself dead.
+  probes:
+    - url: https://docs.lindy.ai/api-reference/openapi.json
+      status: 404
+    - url: https://docs.lindy.ai/openapi.json
+      status: 404
+    - url: https://docs.lindy.ai/openapi.yaml
+      status: 404
+    - url: https://docs.lindy.ai/docs.json
+      status: 404
+    - url: https://api.lindy.ai/openapi.json
+      status: 404
+    - url: https://api.lindy.ai/v1/openapi.json
+      status: 404
+    - url: https://api.lindy.ai/swagger.json
+      status: 404
+    - url: https://api.lindy.ai/docs
+      status: 404
+    - url: https://public.lindy.ai/openapi.json
+      status: 404
+    - url: https://public.lindy.ai/api/v1/openapi.json
+      status: 404
+    - url: https://public.lindy.ai/swagger.json
+      status: 404
+    - url: https://public.lindy.ai/api-docs
+      status: 404
+    - url: https://public.lindy.ai/docs
+      status: 404
+    - url: https://www.lindy.ai/openapi.json
+      status: 404
+    - url: https://www.lindy.ai/api
+      status: 404
+    - url: https://www.lindy.ai/developers
+      status: 404
+    - url: https://docs.lindy.ai/mcp
+      status: 200
+      result: live MCP tools/list — 3 documentation tools, saved
+    - url: https://docs.lindy.ai/.well-known/agent-card.json
+      status: 200
+      result: real A2A AgentCard, saved
+  graphql:
+    probed: false
+    reason: No /graphql surface is documented or advertised on any Lindy host.
+  github_org_searched:
+    url: https://github.com/lindy-ai
+    public_repos:
+      - lindy-ai/docs
+      - lindy-ai/buildkit-cache-dance
+      - lindy-ai/mle_take_home_task
+    result: >-
+      The docs repo (882 files) contains no OpenAPI, no AsyncAPI, no .proto and
+      no WSDL. No SDK repository exists.
+standards:
+  - id: mcp
+    name: Model Context Protocol
+    conforms: true
+    role: server and client
+    evidence:
+      - >-
+        Server — https://docs.lindy.ai/mcp answers a JSON-RPC 2.0 tools/list
+        over streamable HTTP with three tools carrying inputSchema and
+        annotations (200, 2026-08-29). Advertised at
+        https://docs.lindy.ai/.well-known/mcp.json.
+      - >-
+        Client — https://docs.lindy.ai/integrations/mcp documents connecting
+        Lindy agents to any hosted MCP server over a public HTTPS
+        streamable-HTTP endpoint, reading the tool catalog and generating one
+        agent action per supported tool.
+  - id: a2a
+    name: Agent2Agent Protocol
+    conforms: true
+    version_declared: '0.3'
+    evidence:
+      - >-
+        https://docs.lindy.ai/.well-known/agent-card.json (200) parses as an
+        AgentCard and grades conformant against A2A 1.0.0 hard checks. See
+        a2a/lindy-a2a.yml.
+  - id: agent-skills
+    name: Agent Skills
+    conforms: true
+    evidence:
+      - >-
+        https://docs.lindy.ai/.well-known/agent-skills/lindyai/skill.md (200,
+        text/markdown) — frontmatter name/description plus markdown body. Saved
+        verbatim to skills/lindy-lindyai.md.
+  - id: llms-txt
+    name: llms.txt
+    conforms: true
+    evidence:
+      - https://docs.lindy.ai/llms.txt (200)
+      - https://www.lindy.ai/llms.txt (200)
+  - id: openapi
+    name: OpenAPI
+    conforms: false
+    evidence:
+      - See contract_discovery above — no first-party OpenAPI published.
+  - id: asyncapi
+    name: AsyncAPI
+    conforms: false
+    evidence:
+      - >-
+        Webhooks are documented in prose only
+        (https://docs.lindy.ai/skills/by-lindy/webhooks, 200); no AsyncAPI
+        document exists on any host or in the public GitHub org.
+  - id: rfc9457
+    name: 'RFC 9457 Problem Details for HTTP APIs'
+    conforms: false
+    evidence:
+      - No error reference is published; no application/problem+json surface observed.
+  - id: rfc8594
+    name: 'RFC 8594 Sunset HTTP Header'
+    conforms: false
+    evidence:
+      - No deprecation or sunset policy published. See lifecycle/lindy-lifecycle.yml.
+  - id: oauth2
+    name: OAuth 2.0
+    conforms: partial
+    evidence:
+      - >-
+        Lindy is an OAuth *client*: https://docs.lindy.ai/integrations/overview
+        documents connecting third-party tools with OAuth or an API key. Lindy
+        publishes no OAuth authorization server of its own —
+        /.well-known/oauth-authorization-server 404s on every host.
+  - id: scim
+    name: SCIM
+    conforms: partial
+    evidence:
+      - >-
+        https://docs.lindy.ai/pricing lists "SSO and SCIM" as an Enterprise-tier
+        feature. No SCIM schema URN, endpoint or configuration document is
+        published, so the conformance is a plan-page claim, not a contract.
+  - id: idempotency
+    name: Idempotency keys
+    conforms: false
+    evidence:
+      - >-
+        No idempotency header or key documented. The three live MCP tools carry
+        MCP annotations instead — two set idempotentHint true, submit_feedback
+        sets it false.
+domain_standard:
+  applicable: false
+  note: >-
+    REWARD-ONLY check, deliberately left empty. Lindy's market — general-purpose
+    AI agents and workplace automation — has no established domain data standard
+    of the SCIM/OData/OpenRTB/HL7/OneRoster class. The nearest thing to a domain
+    standard for this market is MCP + A2A + Agent Skills, all three of which
+    Lindy publishes and which are recorded under standards[] above.
+compliance:
+  published: true
+  source: https://www.lindy.ai/security
+  status: 200
+  trust_center: https://app.drata.com/trust/9cb791f0-0c38-11ee-865f-029d78a187d9
+  certifications:
+    - id: soc2-type-ii
+      name: SOC 2 Type II
+      status: certified
+      auditor: Johanson Group
+      evidence: https://www.lindy.ai/security
+    - id: iso-27001
+      name: ISO 27001
+      status: certified
+      evidence: https://app.drata.com/trust/9cb791f0-0c38-11ee-865f-029d78a187d9
+    - id: gdpr
+      name: GDPR
+      status: compliant
+      evidence: https://www.lindy.ai/security
+    - id: hipaa
+      name: HIPAA
+      status: compliant
+      detail: Security controls mapped to HIPAA requirements.
+      evidence: https://www.lindy.ai/security
+    - id: pipeda
+      name: PIPEDA
+      status: compliant
+      evidence: https://www.lindy.ai/security
+  reports_on_request: >-
+    SOC 2 reports and compliance summaries are requestable through the Drata
+    trust center linked from https://www.lindy.ai/security.
+  data_handling_claims:
+    - Encrypted in transit and at rest
+    - Customer data is not sold
+    - Customer data is not used to train AI models by Lindy or its model providers
+    - Data deletion requests, access rights and residency requirements supported
+    - Regular vulnerability scans and penetration tests
+    - Every action an agent takes is logged
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

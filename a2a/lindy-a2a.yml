@@ -1,0 +1,68 @@
+generated: '2026-08-29'
+method: probed
+source: https://docs.lindy.ai/.well-known/agent-card.json
+provider: Lindy
+providerId: lindy
+name: Lindy Documentation
+card: a2a/lindy-agent-card.json
+discovery:
+  path: /.well-known/agent-card.json
+  canonical: true
+  host: docs.lindy.ai
+x-evidence:
+  fetched: '2026-08-29'
+  url: https://docs.lindy.ai/.well-known/agent-card.json
+  http_status: 200
+  content_type: application/json
+ownership: >-
+  Served from docs.lindy.ai, Lindy's own documentation host (the Documentation
+  pointer in apis.yml). The card names itself "Lindy Documentation" and its
+  provider.organization is "Lindy Documentation", with url and documentationUrl
+  both https://docs.lindy.ai/. It describes the documentation agent surface, not
+  the Lindy product API; Lindy publishes no product API agent card.
+grade: conformant
+grade_basis:
+  capabilities_is_object: true
+  protocol_version_present: true
+  skills_is_array: true
+  preferred_transport_present: true
+  default_input_modes_present: true
+  default_output_modes_present: true
+deviations:
+  - id: protocol-version-pre-1.0
+    detail: >-
+      protocolVersion is "0.3", not A2A 1.0.0. The card passes every 1.0.0 hard
+      check but declares an older protocol revision.
+  - id: skill-tags-empty
+    detail: The single skill declares an empty tags[] array.
+  - id: generated-by-docs-platform
+    detail: >-
+      The card is emitted by the Mintlify documentation platform that hosts
+      docs.lindy.ai, alongside /.well-known/mcp.json and the agent-skills path.
+      It advertises documentation assistance, not the Lindy agent product.
+capabilities:
+  streaming: false
+  pushNotifications: false
+preferredTransport: HTTP+JSON
+protocolVersion: '0.3'
+skills:
+  - id: lindyai
+    name: Lindyai
+    url: https://docs.lindy.ai/.well-known/agent-skills/lindyai/skill.md
+    saved: skills/lindy-lindyai.md
+probes:
+  - url: https://docs.lindy.ai/.well-known/agent-card.json
+    status: 200
+  - url: https://www.lindy.ai/.well-known/agent-card.json
+    status: 404
+  - url: https://www.lindy.ai/.well-known/agent.json
+    status: 404
+  - url: https://api.lindy.ai/.well-known/agent-card.json
+    status: 404
+  - url: https://public.lindy.ai/.well-known/agent-card.json
+    status: 404
+  - url: https://public.lindy.ai/.well-known/agent.json
+    status: 404
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

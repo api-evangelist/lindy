@@ -1,0 +1,74 @@
+generated: '2026-08-29'
+method: searched
+source: >-
+  https://status.lindy.ai/ , https://www.lindy.ai/changelog ,
+  https://www.lindy.ai/terms-of-service , https://docs.lindy.ai/
+provider: Lindy
+providerId: lindy
+description: >-
+  Lifecycle posture for Lindy. Lindy runs a public status page and a dated
+  product changelog, but publishes no API versioning policy, no deprecation
+  policy, no Sunset/Deprecation header convention (RFC 8594) and no public SLA —
+  consistent with a product that ships no public REST API contract.
+status_page:
+  published: true
+  url: https://status.lindy.ai/
+  status: 200
+  vendor: third-party hosted status page
+  components_public: true
+  incident_history_public: true
+  subscribe: email updates offered on the page
+change_log:
+  published: true
+  url: https://www.lindy.ai/changelog
+  status: 200
+  artifact: changelog/lindy-changelog.yml
+  latest_entry: '2025-10-21'
+versioning:
+  api_versioning_policy: null
+  scheme_documented: false
+  observed_path_version: v1
+  observed_in: https://public.lindy.ai/api/v1/webhooks/[unique-id]
+  note: >-
+    The only documented Lindy API path carries a /api/v1 segment, so a path
+    version exists in practice, but no versioning policy, no version list and no
+    version-negotiation guidance is published anywhere on the docs or site.
+  product_versioning:
+    scheme: marketing major releases
+    latest: Lindy 3.0
+    date: '2025-08-04'
+deprecation:
+  policy_published: false
+  policy_url: null
+  sunset_header: false
+  deprecation_header: false
+  rfc8594: false
+  notice_window: null
+  note: >-
+    No deprecation or sunset policy found on www.lindy.ai, docs.lindy.ai, the
+    changelog or the terms of service. Searched 2026-08-29.
+  observed_deprecations:
+    - item: Lindy agent-builder documentation section
+      detail: >-
+        The docs navigation (docs.json in github.com/lindy-ai/docs) has been cut
+        back to the Lindy Teammate product. The agent-builder pages
+        (skills/by-lindy/*, fundamentals/lindy-101/*, testing/*, use-cases/*)
+        are still live and return 200 but are unlinked from the nav and absent
+        from llms.txt — reachable only by direct URL. No deprecation notice
+        accompanies them.
+      evidence: https://docs.lindy.ai/skills/by-lindy/webhooks
+      status: 200
+sla:
+  published: false
+  url: null
+  uptime_commitment: null
+  note: >-
+    No public SLA. The terms of service (https://www.lindy.ai/terms-of-service,
+    200) is the only published service commitment and states no uptime target.
+    Enterprise plan is "contact us" — any SLA is contractual and not public.
+support:
+  email: support@lindy.ai
+  contact_sales: https://www.lindy.ai/contact-sales
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

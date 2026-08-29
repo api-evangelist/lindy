@@ -1,0 +1,128 @@
+generated: '2026-08-29'
+method: searched
+source: >-
+  https://docs.lindy.ai/ , https://docs.lindy.ai/skills/by-lindy/webhooks ,
+  https://docs.lindy.ai/mcp , live probes
+provider: Lindy
+providerId: lindy
+description: >-
+  Cross-cutting runtime semantics for Lindy's callable surface. Most entries are
+  honest absences: Lindy publishes no REST API contract, so there is nothing to
+  read pagination, expansion, request-id or error-envelope conventions from. The
+  two surfaces that ARE callable are a per-webhook bearer-secret trigger
+  endpoint and an anonymous read-only documentation MCP server.
+surfaces:
+  - id: webhook-trigger
+    url: https://public.lindy.ai/api/v1/webhooks/[unique-id]
+    kind: inbound HTTP trigger
+    write: true
+    note: >-
+      A POST to this URL starts an agent task. It is a write in the sense that
+      it causes work to happen; it exposes no resource CRUD.
+  - id: docs-mcp
+    url: https://docs.lindy.ai/mcp
+    kind: MCP streamable-http
+    write: false
+    note: >-
+      Two of three tools are annotated readOnlyHint true / idempotentHint true.
+      submit_feedback is the only non-read tool and is annotated
+      destructiveHint false.
+auth_style:
+  webhook: bearer secret per webhook
+  mcp: anonymous
+  detail: authentication/lindy-authentication.yml
+idempotency:
+  supported: na
+  header: null
+  scope: null
+  retention: null
+  grade: na
+  detail: >-
+    No idempotency key, header or replay window is documented for the webhook
+    endpoint, and no REST write surface exists to attach one to. The MCP tools
+    carry MCP idempotentHint annotations (search and filesystem query true,
+    submit_feedback false), which is an agent-facing hint, not an idempotency
+    key protocol. Recorded as na rather than false: there is no public write API
+    on which idempotency could be offered.
+reversibility:
+  grade: na
+  detail: >-
+    Lindy publishes no public write API, so there is no operation to reverse and
+    no reversal window to state. Recorded as na, not zero.
+  write_surfaces:
+    - surface: webhook trigger POST
+      effect: starts an agent task
+      reversal_operation: >-
+        In-product only. The changelog entry of 2025-09-02 documents a Terminate
+        button that stops a running task and prevents its follow-up actions, and
+        the 2025-06-26 entry documents Disable Agent / Enable Agent actions.
+        These are UI and in-workflow controls, not API operations — there is no
+        published endpoint or operationId to call.
+      reversal_window: null
+      window_source: null
+      note: >-
+        NO WINDOW IS ASSERTED. Lindy states none. What an agent task has already
+        done in a third-party tool (a sent email, an updated CRM record) is not
+        reversible by Lindy at all; termination stops future steps only.
+      grade: na
+    - surface: submit_feedback (MCP)
+      effect: files a documentation problem report
+      reversal_operation: null
+      reversal_window: null
+      grade: na
+  human_in_the_loop:
+    documented: true
+    url: https://docs.lindy.ai/testing/human-in-the-loop
+    detail: >-
+      Lindy documents approval gates so an agent pauses for a human before
+      acting. This is prevention, not reversal, and is the closest published
+      control to a rollback.
+dry_run_mode:
+  supported: na
+  detail: >-
+    No API dry-run. In-product Lindy documents a Test Panel
+    (https://docs.lindy.ai/testing/test-panel) and evals for rehearsing an agent
+    before it runs, but there is no request-level dry-run flag because there is
+    no request-level API.
+pagination:
+  style: null
+  detail: No paginated API surface is published.
+field_expansion:
+  supported: false
+sparse_fieldsets:
+  supported: false
+metadata:
+  supported: false
+request_id_tracing:
+  header: null
+  detail: >-
+    No request-id or correlation header is documented. Lindy does log every
+    agent action in-product ("Every action Lindy takes is logged",
+    https://www.lindy.ai/security) and documents agent observability
+    (https://docs.lindy.ai/skills/lindy-utilities/observability), but exposes no
+    trace identifier to a caller.
+versioning:
+  style: path
+  observed: /api/v1
+  policy_published: false
+  detail: lifecycle/lindy-lifecycle.yml
+error_envelope:
+  format: null
+  rfc9457: false
+  detail: >-
+    No error reference is published. Unauthenticated probes of public.lindy.ai
+    return the stock Express HTML 404 body ("Cannot GET /path") rather than a
+    structured error, which is the only error shape observable without
+    credentials.
+rate_limit_signaling:
+  headers: []
+  detail: rate-limits/lindy-rate-limits.yml — limit_count 0, no headers documented.
+cross_links:
+  errors: null
+  lifecycle: lifecycle/lindy-lifecycle.yml
+  authentication: authentication/lindy-authentication.yml
+  rate_limits: rate-limits/lindy-rate-limits.yml
+  webhooks: asyncapi/lindy-webhooks.yml
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

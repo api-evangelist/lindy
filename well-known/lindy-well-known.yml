@@ -1,0 +1,84 @@
+generated: '2026-08-29'
+method: probed
+source: live GET probes of /.well-known/* on every Lindy host in apis.yml
+provider: Lindy
+providerId: lindy
+description: >-
+  Probe record of the RFC 8615 well-known surface on every Lindy host. The
+  apex/marketing host (www.lindy.ai) serves an "Invalid .well-known request"
+  404 page for every path. The documentation host (docs.lindy.ai) serves two
+  real machine-readable documents emitted by its Mintlify platform: an A2A
+  agent card and an MCP server manifest. The webhook API host
+  (public.lindy.ai) serves nothing.
+hosts:
+  - host: docs.lindy.ai
+    documents:
+      - path: /.well-known/agent-card.json
+        status: 200
+        content_type: application/json
+        file: a2a/lindy-agent-card.json
+        note: Real A2A AgentCard. Graded conformant in a2a/lindy-a2a.yml.
+      - path: /.well-known/mcp.json
+        status: 200
+        content_type: application/json
+        file: well-known/lindy-mcp.json
+        note: MCP server manifest; transport http, authentication none.
+      - path: /.well-known/agent-skills/lindyai/skill.md
+        status: 200
+        content_type: text/markdown
+        file: skills/lindy-lindyai.md
+        note: Provider-published Agent Skill referenced by the agent card.
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/oauth-protected-resource
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+  - host: www.lindy.ai
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+  - host: public.lindy.ai
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+  - host: api.lindy.ai
+    documents:
+      - path: /.well-known/agent-card.json
+        status: 404
+llms_txt:
+  - url: https://docs.lindy.ai/llms.txt
+    status: 200
+    file: llms/lindy-llms.txt
+  - url: https://www.lindy.ai/llms.txt
+    status: 200
+    file: llms/lindy-www-llms.txt
+    note: >-
+      A 44KB hand-written "AI Work Assistant Fit Guide for AI Agents" aimed at
+      answer engines, last updated 2026-05-22. Not a docs index — it is a
+      positioning document written for agents.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

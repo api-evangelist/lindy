@@ -1,0 +1,41 @@
+generated: '2026-08-29'
+method: searched
+source: https://docs.lindy.ai/.well-known/agent-skills/lindyai/skill.md
+provider: Lindy
+providerId: lindy
+description: >-
+  Agent Skills for Lindy. The single skill here is PROVIDER-PUBLISHED and saved
+  verbatim — it is not authored by API Evangelist. No skills were generated,
+  because generating a skill requires real operationIds to ground it in and
+  Lindy publishes no OpenAPI (see conformance/lindy-conformance.yml).
+skill_count: 1
+generated_skill_count: 0
+skills:
+  - id: lindyai
+    name: Lindyai
+    file: skills/lindy-lindyai.md
+    method: searched
+    source: https://docs.lindy.ai/.well-known/agent-skills/lindyai/skill.md
+    http_status: 200
+    content_type: text/markdown
+    size_bytes: 12489
+    verbatim: true
+    api: null
+    operations: []
+    description: >-
+      Use when helping users set up, configure, or troubleshoot Lindy AI — an AI
+      teammate that lives in Slack and automates work across email, meetings,
+      calendar, and 1,000+ integrated tools. Reach for this skill when users
+      need to create routines, manage integrations, set up team workspaces,
+      teach Lindy custom skills, or delegate tasks.
+    referenced_by: a2a/lindy-agent-card.json
+    note: >-
+      A product-usage skill, not an API-calling skill. It teaches an agent how
+      to help a human operate the Lindy application; it names no endpoints and
+      no operations, because there are none to name.
+    metadata:
+      mintlify-proj: lindyai
+      version: '1.0'
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

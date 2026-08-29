@@ -1,0 +1,49 @@
+generated: '2026-08-29'
+method: searched
+source: https://docs.lindy.ai/skills/by-lindy/lindy-embed
+provider: Lindy
+providerId: lindy
+description: >-
+  Client-side embeddable surfaces Lindy publishes. One family: Lindy Embed, a
+  hosted chat surface a customer drops into their own site. Distinct from an
+  SDK — it is copy-paste distribution, not a package, and Lindy publishes no
+  package for it.
+families:
+  - id: lindy-embed
+    name: Lindy Embed
+    url: https://docs.lindy.ai/skills/by-lindy/lindy-embed
+    status: 200
+    kind: hosted embeddable chat surface
+    description: >-
+      Configured from the "Lindy Embed" trigger in the agent flow editor
+      ("Configure Embed Settings"), which generates the distributable snippet.
+    variants:
+      - id: popup
+        name: Popup
+        distribution: script snippet pasted into the site <head>
+        documented_platforms:
+          - Webflow (Site Settings > Custom Code > Head Code)
+          - Wix (Settings > Custom Code)
+          - Squarespace (Site Settings > Advanced > Code Injection > Header)
+          - WordPress (WPCode Insert Headers and Footers plugin > Header)
+      - id: iframe
+        name: iFrame
+        distribution: iframe snippet pasted anywhere the site builder accepts iframes
+        note: >-
+          The docs require the containing element to have a defined height,
+          because the iframe inherits its container's height.
+    versioned: false
+    version: null
+    version_note: >-
+      The snippet is generated per agent inside the Lindy app and is not
+      published in the docs, so no loader URL, package name or version string is
+      publicly observable. A consumer cannot pin a version.
+    package: null
+    registry: null
+loader_libraries: []
+probes:
+  - url: https://docs.lindy.ai/skills/by-lindy/lindy-embed
+    status: 200
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

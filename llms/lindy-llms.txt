@@ -25,8 +25,10 @@
 - [Best Practices](https://docs.lindy.ai/start-here/best-practices.md)
 - [Chrome Extension](https://docs.lindy.ai/features/chrome-extension.md): Lindy runs inside Gmail. Triaged inbox, a morning brief, drafted replies, and a sidebar chat, all without leaving your tab.
 - [Integrations](https://docs.lindy.ai/integrations/overview.md): Connect Lindy to the tools your team already uses, and control what it can do with guardrails.
+- [Credentials](https://docs.lindy.ai/integrations/credentials.md): Save an API key once, keep it for yourself or share it with the workspace, and let Lindy use it without anyone pasting it into a chat.
+- [MCP servers](https://docs.lindy.ai/integrations/mcp.md): Point Lindy at a hosted MCP server and it builds actions from the tools that server publishes.
 - [Pricing](https://docs.lindy.ai/pricing.md): Simple per-user plans for the AI teammate that runs your work life. Plus, Pro, Max, and Enterprise.
-- [Understanding Your Usage](https://docs.lindy.ai/account-billing/usage.md): Why you saw a usage warning, how your plan works, and what to do if you need more
+- [Understanding Your Usage](https://docs.lindy.ai/account-billing/usage.md): How your team shares one pool of credits, why Lindy pauses on a heavy task, and what to do when you need more
 - [Billing](https://docs.lindy.ai/coming-soon/lindy-teammate-billing.md): How Lindy Teammate is priced: a seat for each person, a free week for new teammates, and one pool of credits your whole team shares.
 - [Security](https://docs.lindy.ai/resources/security.md)
 - [Changelog](https://docs.lindy.ai/resources/changelog.md)

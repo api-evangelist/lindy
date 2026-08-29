@@ -1,0 +1,97 @@
+generated: '2026-08-29'
+method: searched
+source: https://docs.lindy.ai/skills/by-lindy/webhooks
+provider: Lindy
+providerId: lindy
+type: Webhooks
+description: >-
+  Lindy's webhook surface, documented in prose only. It is INBOUND: Lindy issues
+  you a URL that your system POSTs to in order to trigger an agent workflow. It
+  is not an outbound event catalog — Lindy publishes no list of events it emits
+  to your endpoint, and no AsyncAPI document exists on any Lindy host or in the
+  public GitHub org.
+asyncapi_published: false
+asyncapi_probes:
+  - url: https://www.lindy.ai/asyncapi.yaml
+    status: 404
+  - url: https://github.com/lindy-ai/docs
+    status: 200
+    result: 882 files, no AsyncAPI document
+direction: inbound
+endpoint_pattern: https://public.lindy.ai/api/v1/webhooks/[unique-id]
+host: public.lindy.ai
+transport: HTTPS POST
+authentication:
+  scheme: bearer
+  header: 'Authorization: Bearer [your-secret-key]'
+  secret_model: >-
+    Per-webhook secret generated in the Lindy UI ("Generate Secret") and shown
+    exactly once. Rotation, expiry and revocation are not documented.
+  optional: >-
+    The docs frame the secret as protection you add ("Protect your webhooks from
+    unauthorized access"), implying a webhook can exist without one.
+payload:
+  content_type: application/json
+  schema_published: false
+  note: >-
+    Lindy imposes no schema on the inbound body — the whole request is handed to
+    the workflow. The trigger exposes three variables to subsequent steps.
+  variables:
+    - reference: '{{webhook_received.request.body}}'
+      description: The full JSON payload from the request.
+    - reference: '{{webhook_received.request.headers}}'
+      description: All request headers.
+    - reference: '{{webhook_received.request.query}}'
+      description: Any parameters from the webhook URL.
+follow_up_behavior:
+  - option: Handle in same task
+    description: Process follow-up requests in the same workflow.
+  - option: Create new task
+    description: Spawn a new task for each follow-up webhook call.
+  - option: Ignore
+    description: Ignore follow-up webhook requests.
+response:
+  documented: false
+  callback_pattern: >-
+    Lindy ships a "Send POST Request to Callback" agent skill to respond back to
+    the original request sender, so the reply is authored inside the workflow
+    rather than defined by a contract. No synchronous response shape, status
+    code set, timeout or retry policy is published.
+retries:
+  documented: false
+signature_verification:
+  documented: false
+  note: >-
+    No HMAC signature header, timestamp or replay-protection scheme is
+    documented; the shared bearer secret is the only stated control.
+outbound_events:
+  published: false
+  note: >-
+    Lindy does document agent-lifecycle triggers and actions inside the product
+    (Task Completed trigger; Get Task List, Get Task Details, Disable Agent,
+    Enable Agent actions — changelog 2025-06-26). These are in-product workflow
+    primitives, not an HTTP event catalog delivered to a subscriber endpoint,
+    so they are recorded here as context rather than as published events.
+related_surfaces:
+  - name: HTTP Request action
+    url: https://docs.lindy.ai/skills/by-lindy/http-request
+    status: 200
+    description: >-
+      The outbound half of the integration story — a Lindy agent calls any HTTP
+      API with configurable method, headers, content type and body. Lindy is the
+      client here, so this is not part of Lindy's own contract.
+probes:
+  - url: https://docs.lindy.ai/skills/by-lindy/webhooks
+    status: 200
+  - url: https://docs.lindy.ai/skills/by-lindy/http-request
+    status: 200
+  - url: https://public.lindy.ai/api/v1/webhooks/test
+    status: 404
+docs_visibility_note: >-
+  The webhooks page returns 200 but is no longer in the docs navigation
+  (docs.json) and is absent from llms.txt, so an agent crawling Lindy's own
+  index will not find it. It is reachable only by direct URL. See
+  lifecycle/lindy-lifecycle.yml.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

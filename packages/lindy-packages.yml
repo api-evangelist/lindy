@@ -1,0 +1,79 @@
+generated: '2026-08-29'
+method: searched
+source: >-
+  registry.npmjs.org , pypi.org , rubygems.org , crates.io , pkg.go.dev ,
+  api.github.com/orgs/lindy-ai , https://docs.lindy.ai/
+provider: Lindy
+providerId: lindy
+description: >-
+  Registry and repository search for first-party Lindy client libraries. Result
+  is a genuine zero: Lindy ships no SDK in any language, in any registry, and
+  has no SDK repository in its public GitHub org. This is consistent with a
+  product that publishes no API contract for a client library to wrap.
+package_count: 0
+official_package_count: 0
+packages: []
+searched:
+  - registry: npm
+    query: lindy
+    result: >-
+      No first-party package. The 20 highest-ranked matches are unrelated —
+      `lindy` (a 2013 template language, v0.0.2), `lindyhop`, `lindy-simple`,
+      `@lindy-robotics/cli`, and third-party Claude Code skill packs
+      (`@intentsolutionsio/lindy-pack` v1.0.4, 2026-06-08) that are not
+      published by Lindy.
+    version: null
+    published: null
+  - registry: pypi
+    query: lindy
+    result: No first-party package found.
+    version: null
+    published: null
+  - registry: rubygems
+    query: lindy
+    result: No first-party package found.
+    version: null
+    published: null
+  - registry: crates.io
+    query: lindy
+    result: No first-party package found.
+    version: null
+    published: null
+  - registry: pkg.go.dev
+    query: lindy
+    result: No first-party module found.
+    version: null
+    published: null
+  - registry: github
+    query: https://github.com/lindy-ai
+    status: 200
+    result: >-
+      Three public repositories — lindy-ai/docs (the Mintlify docs source),
+      lindy-ai/buildkit-cache-dance (a fork of a CI utility) and
+      lindy-ai/mle_take_home_task (a hiring exercise). No SDK, no CLI, no
+      client library.
+    version: null
+    published: null
+  - registry: docs
+    query: https://docs.lindy.ai/
+    status: 200
+    result: >-
+      No SDK, client-library or "install" page exists in the documentation.
+      The integration story is the Lindy UI plus the HTTP Request action, not a
+      package a developer installs.
+    version: null
+    published: null
+cdn_distribution:
+  - id: lindy-embed
+    registry: cdn
+    version: null
+    published: null
+    note: >-
+      Lindy Embed is distributed as a snippet generated per agent inside the
+      Lindy app rather than as a registry package. The snippet is not published
+      in the docs, so no URL, pinned version or CDN metadata endpoint is
+      publicly observable. Checked 2026-08-29 — nothing to record, not
+      unchecked. See components/lindy-components.yml.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

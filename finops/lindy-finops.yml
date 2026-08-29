@@ -11,10 +11,15 @@ providerId: lindy
 publisherName: Lindy
 serviceCategory: API
 created: '2026-05-04'
-# Provenance stamped 2026-08-11: this artifact was written by the API Evangelist
-# bulk sweep dated 2026-05-04, not harvested from the provider. See roadmap#35.
-method: generated
-modified: '2026-05-04'
+# Framework mapping written by the API Evangelist bulk sweep dated 2026-05-04.
+# The billingModel, focusColumns, meters and apis blocks were corrected against
+# Lindy's published pricing on 2026-08-29 (see plans/lindy-plans-pricing.yml):
+# Lindy bills per seat with a shared credit pool, NOT per API request. The
+# framework/domains/principles scaffold below remains generated.
+method: derived
+modified: '2026-08-29'
+generated: '2026-08-29'
+source: https://docs.lindy.ai/pricing
 tags:
   - AI Agents
   - AI Automation
@@ -64,9 +69,14 @@ domains:
       - Onboarding Workloads
       - Intersecting Disciplines
 billingModel:
-  pricingCategory: Usage-Based
+  pricingCategory: Committed seat subscription with usage-metered credits
   billingFrequency: Monthly
   billingCurrency: USD
+  seatPrice:
+    Plus: '30.00'
+    Pro: '100.00'
+    Max: '200.00'
+    Enterprise: custom
   chargeCategories:
     - Usage
     - Purchase
@@ -80,51 +90,55 @@ focusColumns:
   ProviderName: Lindy
   PublisherName: Lindy
   InvoiceIssuerName: Lindy
-  PricingCategory: Usage-Based
-  PricingUnit: request
+  PricingCategory: Committed seat subscription with usage-metered credits
+  PricingUnit: credit
+  PricingUnitNote: >-
+    A credit is worth approximately USD 0.01 and is consumed only when Lindy
+    performs work. Credits are allotted per user and pooled across the
+    workspace. Source https://docs.lindy.ai/pricing.
   BillingCurrency: USD
   ChargeCategory: Usage
 meters:
-  - name: api_requests
-    description: Count of billable API requests
-    unit: request
+  - name: credits
+    description: >-
+      The single metered unit Lindy publishes. Everyday asks consume 2-250
+      credits, deep work 250-1,000, big builds 1,000-2,500.
+    unit: credit
     aggregation: sum
     dimensions:
-      - api
-      - endpoint
-      - tier
-      - region
-      - consumer
-  - name: data_egress
-    description: Bytes returned over the network in API responses
-    unit: GB
-    aggregation: sum
+      - user
+      - workspace
+      - task
+  - name: seats
+    description: Billable users on the workspace
+    unit: user
+    aggregation: count
     dimensions:
-      - api
-      - region
-      - consumer
-  - name: compute_seconds
-    description: Server-side compute consumed by the request, where applicable
-    unit: second
-    aggregation: sum
+      - workspace
+      - plan
+  - name: connected_inboxes
+    description: Mail accounts connected per user; capped by plan (2 / 3 / 5)
+    unit: inbox
+    aggregation: count
     dimensions:
-      - api
-      - endpoint
-      - tier
+      - user
+      - plan
 apis:
   - name: Lindy
-    baseURL: ''
+    baseURL: https://public.lindy.ai/api/v1
     tags:
       - AI Automation
     serviceName: Lindy
     serviceCategory: API
 unitEconomics:
-  - name: Cost per 1K Requests
-    metric: billed_cost / (api_requests / 1000)
-    target: TBD
-  - name: Cost per Active Consumer
-    metric: billed_cost / active_consumers
-    target: TBD
+  - name: Cost per 1K Credits
+    metric: billed_cost / (credits / 1000)
+    published: >-
+      Plus USD 10.00, Pro USD 6.67, Max USD 5.71 per 1,000 credits at list
+      price, derived from the published seat price and credit allotment.
+  - name: Cost per Seat
+    metric: billed_cost / active_users
+    published: 'Plus 30, Pro 100, Max 200 USD per user per month'
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

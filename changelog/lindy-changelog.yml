@@ -1,0 +1,92 @@
+generated: '2026-08-29'
+method: searched
+source: https://www.lindy.ai/changelog
+provider: Lindy
+providerId: lindy
+url: https://www.lindy.ai/changelog
+scheme: dated-entries
+versioning: product-release-notes
+current_version: 'Lindy 3.0'
+current_version_date: '2025-08-04'
+format: html
+machine_readable: false
+feed: null
+staleness:
+  latest_entry: '2025-10-21'
+  checked: '2026-08-29'
+  note: >-
+    The newest dated entry on the public changelog is 2025-10-21, over ten
+    months before this check, while the product shipped a whole new surface in
+    that window (Lindy Teammate, the Slack-native product the current docs are
+    written for, plus the Lindy Academy). The changelog page is live and
+    well-structured but is no longer tracking the product.
+entry_count_on_page: 22
+oldest_entry: '2024-06-14'
+entries:
+  - date: '2025-10-21'
+    title: Retries, task search and filter, version renaming, copy and paste between agents
+    breaking: false
+    additions:
+      - Retry any action an agent has run with a single click
+      - Search an agent's task list and filter by errored or unread
+      - Rename versions
+      - Copy and paste steps between agents
+  - date: '2025-09-02'
+    title: Task sharing, terminate button
+    breaking: false
+    additions:
+      - Share a public link to any task
+      - Terminate a running task, stopping follow-up actions
+  - date: '2025-08-28'
+    title: App builder
+    breaking: false
+    additions:
+      - Lindy Build — build web apps from a prompt, with automatic issue finding and fixing
+  - date: '2025-08-04'
+    title: Lindy 3.0
+    breaking: false
+    additions:
+      - 'Agent Builder: build an agent from a natural-language prompt'
+      - 'Autopilot: agents get a cloud computer and operate apps directly'
+      - 'Team Accounts: deploy and share agents organization-wide'
+  - date: '2025-07-22'
+    title: 500+ new actions across Hubspot, Notion, Coda, Airtable, Quickbooks, and more
+    breaking: false
+    additions:
+      - 500+ new actions across 200+ apps via a Pipedream partnership
+  - date: '2025-07-08'
+    title: Autosave and drafts, Gemini 2.5 Flash Lite
+    breaking: false
+    additions:
+      - Agent changes autosave as drafts, with a discard-draft revert
+      - Gemini 2.5 Flash-Lite model support
+  - date: '2025-06-26'
+    title: Monitoring your agents, Parallel.ai, new lead enrichment apps, and more
+    breaking: false
+    additions:
+      - 'Agent-monitoring triggers and actions: Task Completed, Get Task List, Get Task Details, Disable Agent, Enable Agent'
+      - Parallel.ai integration
+      - Hunter, Contactout and Prospeo lead-enrichment apps
+      - Outlook Calendar trigger
+  - date: '2025-06-10'
+    title: Gemini 2.5 Flash, faster phone calls, mandatory conditions, and more
+    breaking: false
+  - date: '2025-05-15'
+    title: o3, Referral codes, overages, free testing, MS Excel, and more
+    breaking: false
+  - date: '2025-05-01'
+    title: Introducing our new Code action
+    breaking: false
+  - date: '2025-04-17'
+    title: Versioning, Gemini 2.5 Pro, new web scrapers, and more
+    breaking: false
+  - date: '2025-03-19'
+    title: Variables, custom onboardings, advanced credit monitoring and more
+    breaking: false
+docs_changelog:
+  url: https://docs.lindy.ai/resources/changelog
+  status: 200
+  note: The docs changelog page is a one-line pointer back to www.lindy.ai/changelog.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

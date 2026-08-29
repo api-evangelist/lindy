@@ -1,7 +1,17 @@
 aid: lindy
 name: Lindy
 description: >-
-  Lindy is an AI automation platform for building customizable AI agents across CRM, inbox, and internal tools.
+  Lindy is an AI automation platform for building and running AI agents that do
+  real work across a company's tools. The current product, Lindy Teammate, lives
+  in Slack and handles inbox triage and drafting, meeting recording, notes and
+  scheduling, daily briefs and scheduled routines, backed by an agent builder
+  that turns a natural-language prompt into a working agent and connects to
+  thousands of third-party apps through OAuth integrations, stored credentials
+  and any hosted MCP server. Lindy publishes no public REST API contract: its
+  machine-readable surface is agent-native rather than contract-native — a live
+  anonymous MCP server and a conformant A2A agent card on its documentation
+  host, a published Agent Skill, llms.txt on two hosts, and a single
+  bearer-authenticated inbound webhook endpoint that triggers an agent workflow.
 type: Index
 deliveryModel:
   model: unknown
@@ -15,54 +25,137 @@ deliveryModel:
   generated: '2026-08-28'
   method: derived
 accessModel:
-  pricing: freemium
-  onboarding: unknown
-  trial: false
-  try_now: false
+  pricing: paid
+  onboarding: self-service
+  trial: true
+  try_now: true
   public: false
-  label: Freemium
-  confidence: medium
+  label: Paid per-seat subscription with a free trial; no free tier
+  confidence: high
   source:
   - plans
-  generated: '2026-07-22'
-  method: derived
+  - https://docs.lindy.ai/pricing
+  generated: '2026-08-29'
+  method: searched
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/lindy.png
 tags:
   - AI Agents
   - AI Automation
+  - Agentic AI
+  - MCP
+  - Workflow Automation
+  - Virtual Assistant
+  - Productivity
+  - Email
+  - Meetings
+  - Slack
 url: >-
   https://raw.githubusercontent.com/api-evangelist/lindy/refs/heads/main/apis.yml
 created: '2026-03-27'
-modified: '2026-03-27'
+modified: '2026-08-29'
 specificationVersion: '0.23'
 apis:
   - aid: lindy:lindy
     name: Lindy
     description: >-
-      Lindy is an AI automation platform for building customizable AI agents across CRM, inbox, and internal tools.
+      Lindy's callable surface. There is no public REST API and no published
+      OpenAPI. The one documented HTTP endpoint is an inbound webhook trigger at
+      https://public.lindy.ai/api/v1/webhooks/[unique-id], authenticated with a
+      per-webhook bearer secret generated in the Lindy UI; a POST to it starts
+      an agent task and the whole request body, headers and query string are
+      handed to the workflow. Alongside it Lindy's documentation host serves a
+      live anonymous MCP server and an A2A agent card.
     humanURL: https://www.lindy.ai
+    baseURL: https://public.lindy.ai/api/v1
+    baseURLSource: >-
+      Named by Lindy's own documentation at
+      https://docs.lindy.ai/skills/by-lindy/webhooks — "Each webhook gets a
+      unique URL in the format https://public.lindy.ai/api/v1/webhooks/[unique-id]".
+      The host resolves and serves; unauthenticated paths return 404.
     tags:
       - AI Automation
+      - Webhooks
     properties:
       - type: Documentation
         url: https://docs.lindy.ai
+      - type: Webhooks
+        url: asyncapi/lindy-webhooks.yml
+      - type: Authentication
+        url: authentication/lindy-authentication.yml
 common:
-  - type: TrustCenter
-    url: security/lindy-trust-center.yml
-  - type: DomainSecurity
-    url: security/lindy-domain-security.yml
-  - type: GitHubOrganization
-    url: https://github.com/lindy-ai
-  - type: LinkedIn
-    url: https://www.linkedin.com/company/lindyai
   - type: Website
     url: https://www.lindy.ai
   - type: Documentation
     url: https://docs.lindy.ai
-  - type: LlmsText
+  - type: GettingStarted
+    url: https://docs.lindy.ai/start-here/quickstart
+  - type: Blog
+    url: https://www.lindy.ai/blog
+  - type: ChangeLog
+    url: changelog/lindy-changelog.yml
+  - type: StatusPage
+    url: https://status.lindy.ai/
+  - type: Lifecycle
+    url: lifecycle/lindy-lifecycle.yml
+  - type: Pricing
+    url: https://www.lindy.ai/pricing
+  - type: Plans
+    url: plans/lindy-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/lindy-rate-limits.yml
+  - type: FinOps
+    url: finops/lindy-finops.yml
+  - type: SignUp
+    url: https://chat.lindy.ai/signup
+  - type: Login
+    url: https://chat.lindy.ai/login
+  - type: TermsOfService
+    url: https://www.lindy.ai/terms-of-service
+  - type: PrivacyPolicy
+    url: https://www.lindy.ai/privacy
+  - type: Support
+    url: mailto:support@lindy.ai
+  - type: Security
+    url: https://www.lindy.ai/security
+  - type: Compliance
+    url: https://www.lindy.ai/security
+  - type: VulnerabilityDisclosure
+    url: security/lindy-vulnerability-disclosure.yml
+  - type: TrustCenter
+    url: security/lindy-trust-center.yml
+  - type: DomainSecurity
+    url: security/lindy-domain-security.yml
+  - type: Conformance
+    url: conformance/lindy-conformance.yml
+  - type: Conventions
+    url: conventions/lindy-conventions.yml
+  - type: MCPServer
+    url: mcp/lindy-mcp.yml
+  - type: AgentCard
+    url: a2a/lindy-a2a.yml
+  - type: AgentSkill
+    url: skills/_index.yml
+  - type: WellKnown
+    url: well-known/lindy-well-known.yml
+  - type: LLMsTxt
     url: https://docs.lindy.ai/llms.txt
-  - url: https://www.lindy.ai/blog
-    type: Blog
+  - type: Webhooks
+    url: asyncapi/lindy-webhooks.yml
+  - type: Authentication
+    url: authentication/lindy-authentication.yml
+  - type: Packages
+    url: packages/lindy-packages.yml
+  - type: Components
+    url: components/lindy-components.yml
+  - type: GitHubOrganization
+    url: https://github.com/lindy-ai
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/lindyai
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
+x-enrichment:
+  date: '2026-08-29'
+  status: enriched
+  artifacts_added: 18
+  pass: local-v1
