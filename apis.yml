@@ -43,6 +43,17 @@ tags:
   - AI Automation
   - Agentic AI
   - MCP
+  - Workflow-Automation
+  - Virtual Assistant
+  - Productivity
+  - Email
+  - Meetings
+  - Slack
+tags_raw:
+  - AI Agents
+  - AI Automation
+  - Agentic AI
+  - MCP
   - Workflow Automation
   - Virtual Assistant
   - Productivity
@@ -73,6 +84,9 @@ apis:
       unique URL in the format https://public.lindy.ai/api/v1/webhooks/[unique-id]".
       The host resolves and serves; unauthenticated paths return 404.
     tags:
+      - AI Automation
+      - Webhook
+    tags_raw:
       - AI Automation
       - Webhooks
     properties:
