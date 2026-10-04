@@ -38,17 +38,21 @@ accessModel:
   generated: '2026-08-29'
   method: searched
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/lindy.png
+x-docs-platform: mintlify
+x-docs-platform-confidence: medium
+x-docs-platform-checked: 2026-10-03
+x-docs-hosting: vercel
 tags:
   - AI Agents
   - AI Automation
-  - Agentic AI
   - MCP
-  - Workflow-Automation
+  - Workflow Automation
   - Virtual Assistant
   - Productivity
   - Email
   - Meetings
   - Slack
+  - A2A
 tags_raw:
   - AI Agents
   - AI Automation
@@ -60,6 +64,8 @@ tags_raw:
   - Email
   - Meetings
   - Slack
+  - Workflow-Automation
+  - A2A
 url: >-
   https://raw.githubusercontent.com/api-evangelist/lindy/refs/heads/main/apis.yml
 created: '2026-03-27'
@@ -173,3 +179,10 @@ x-enrichment:
   status: enriched
   artifacts_added: 18
   pass: local-v1
+x-a2a:
+  verified: true
+  probed: '2026-09-26'
+  url: "https://docs.lindy.ai/.well-known/agent-card.json"
+  grade: "conformant"
+  protocol_version: "0.3"
+  control: 404
