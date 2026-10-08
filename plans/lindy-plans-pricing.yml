@@ -175,3 +175,55 @@ notes:
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - free
+  units:
+  - credit
+  - seat
+  plans:
+  - name: Plus
+    access: paid
+    model: free
+    model_how: derived
+    units:
+    - credit
+    - other
+    - seat
+    periods:
+    - month
+    - unbounded
+  - name: Pro
+    access: paid
+    model: free
+    model_how: derived
+    units:
+    - credit
+    - other
+    - seat
+    periods:
+    - month
+    - unbounded
+  - name: Max
+    access: paid
+    model: free
+    model_how: derived
+    units:
+    - credit
+    - other
+    - seat
+    periods:
+    - month
+    - unbounded
+  - name: Enterprise
+    access: enterprise
+    model: free
+    model_how: derived
+    units:
+    - credit
+    - other
+    periods:
+    - month
+    - unbounded
