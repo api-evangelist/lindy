@@ -1,4 +1,4 @@
-# Lindy (lindy)
+# Lindy
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,49 +64,129 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Lindy is an AI automation platform for building customizable AI agents across CRM, inbox, and internal tools.
+Lindy is an AI automation platform for building and running AI agents that do real work across a company's tools. The current product, Lindy Teammate, lives in Slack and handles inbox triage and drafting, meeting recording, notes and scheduling, daily briefs and scheduled routines, backed by an agent builder that turns a natural-language prompt into a working agent and connects to thousands of third-party apps through OAuth integrations, stored credentials and any hosted MCP server. Lindy publishes no public REST API contract: its machine-readable surface is agent-native rather than contract-native — a live anonymous MCP server and a conformant A2A agent card on its documentation host, a published Agent Skill, llms.txt on two hosts, and a single bearer-authenticated inbound webhook endpoint that triggers an agent workflow.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/lindy/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/lindy/refs/heads/main/apis.yml)
+**Areas:** AI Agents · AI Automation · MCP · Workflow Automation · Virtual Assistant · Productivity · Email · Meetings · Slack · A2A
 
-## Scope
+## Lindy on APIs.io
 
-- **Type:** Index
+Everything profiled for Lindy is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/lindy/](https://apis.io/providers/lindy/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (1)
 
-- AI Agents
-- AI Automation
+- [Lindy](https://apis.io/apis/lindy/lindy/) — Lindy's callable surface. There is no public REST API and no published OpenAPI. The one documented HTTP endpoint is an inbound webhook trigger at…
 
-## Timestamps
+### Published properties
 
-- **Created:** 2026-03-27
-- **Modified:** 2026-03-27
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### AsyncAPI (1)
 
-### Lindy
+Event-driven and webhook contracts.
 
-Lindy is an AI automation platform for building customizable AI agents across CRM, inbox, and internal tools.
+- [Lindy Webhooks](https://apis.io/asyncapis/lindy/lindy-webhooks/)
 
-- **Human URL:** [https://www.lindy.ai](https://www.lindy.ai)
+#### MCP servers (1)
 
-#### Tags
+Model Context Protocol servers that expose the API to agents.
 
-- AI Automation
+- [Lindy Documentation MCP Server](https://apis.io/servers/lindy/lindy-documentation-mcp-server/)
 
-#### Properties
+#### Security (4)
 
-- [Documentation](https://docs.lindy.ai)
+Authentication, trust centre, and vulnerability disclosure.
 
-## Common Properties
+- [Lindy Authentication](https://apis.io/security/lindy/lindy-authentication/)
+- [Lindy Domain Security](https://apis.io/security/lindy/lindy-domain-security/)
+- [Lindy Trust Center](https://apis.io/security/lindy/lindy-trust-center/)
+- [Lindy Vulnerability Disclosure](https://apis.io/security/lindy/lindy-vulnerability-disclosure/)
 
-- [GitHub Organization](https://github.com/lindy-ai)
-- [LinkedIn](https://www.linkedin.com/company/lindyai)
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Lindy Plans Pricing](https://apis.io/plans/lindy/lindy-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Lindy Rate Limits](https://apis.io/rate-limits/lindy/lindy-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Lindy Finops](https://apis.io/finops/lindy/lindy-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
 - [Website](https://www.lindy.ai)
 - [Documentation](https://docs.lindy.ai)
-- [L L Ms Txt](https://docs.lindy.ai/llms.txt)
+- [Getting started](https://docs.lindy.ai/start-here/quickstart)
+- [Pricing](https://www.lindy.ai/pricing)
+- [Sign up](https://chat.lindy.ai/signup)
+- [Blog](https://www.lindy.ai/blog)
+- [Security](https://www.lindy.ai/security)
+- [Compliance](https://www.lindy.ai/security)
+- [Terms of service](https://www.lindy.ai/terms-of-service)
+- [Privacy policy](https://www.lindy.ai/privacy)
+- [GitHub](https://github.com/lindy-ai)
+- [Status](https://status.lindy.ai/)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 57.2** — strong · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 75.0 |
+| Contract quality | 39.0 |
+| Contract governance | 18.2 |
+| Operational transparency | 52.6 |
+| Developer ergonomics | 47.6 |
+| Access clarity | 92.1 |
+
+**Agent readiness 28.1** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | platform (partial credit) |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | yes |
+| Agent Skills | yes |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | na |
+
+**Regulatory alignment 35.3** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/lindy/](https://apis.io/providers/lindy/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Lindy: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/lindy/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
