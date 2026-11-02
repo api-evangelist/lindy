@@ -1,0 +1,74 @@
+# Pricing transcribed from the provider's own page — see provenance. Numbers are quoted, not derived.
+generated: '2026-10-28'
+method: searched
+source: https://www.lindy.ai/pricing
+sources:
+- https://www.lindy.ai/pricing
+provenance:
+  tool: engine/economics/harvest_pricing.py
+  run: 20261028T141238
+  grounding: every price_text was found verbatim in the fetched page text
+audience: business-product
+pricing_basis: per-call
+delivery:
+  delivery: managed
+  method: page
+  read: '2026-10-28'
+published: true
+note: 'Credit-based tiers listed under Team: 5,000 credits $49.99 up to 1,750,000 credits $9,999.50; every
+  active user billed from $49.99/mo.'
+plan_count: 3
+currency: USD
+plans:
+- name: Free
+  price_text: $ 0
+  price: 0
+  currency: USD
+  period: month
+  unit: credits
+  included_quota: $50 in credits for free; free credits last 7 days
+- name: Team
+  price_text: $ 49.99 /mo
+  price: 49.99
+  currency: USD
+  period: month
+  unit: per user
+  included_quota: 5,000 credits / mo
+  overage: Top up anytime at $10 per 1,000 credits
+- name: Enterprise
+  price_text: Custom
+  period: none
+  included_quota: Custom credits and billing
+x-canonical:
+  generated: '2026-11-01'
+  vocabulary: engine/economics/plans-canonical.yml
+  models:
+  - metered
+  - seat
+  units:
+  - credit
+  - seat
+  plans:
+  - name: Free
+    access: other
+    model: metered
+    model_how: derived
+    units:
+    - credit
+    periods:
+    - month
+  - name: Team
+    access: other
+    model: seat
+    model_how: derived
+    units:
+    - seat
+    periods:
+    - month
+  - name: Enterprise
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods:
+    - none
